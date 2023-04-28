@@ -23,7 +23,7 @@ const Order = ({ order }) => {
 					image={item.image}
 					price={item.price}
 					rating={item.rating}
-					hideButton={true}
+					hideButton
 				/>
 			))}
 			<h3 className="order__total">Order Total: {formattedTotal}</h3>

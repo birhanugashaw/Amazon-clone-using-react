@@ -8,9 +8,7 @@ import { initialState, reducer } from './reducer';
 const rootElement = document.getElementById('root');
 
 createRoot(rootElement).render(
-  <React.StrictMode>
     <StateProvider initialState={initialState} reducer={reducer}>
       <App />
     </StateProvider>
-  </React.StrictMode>
 );

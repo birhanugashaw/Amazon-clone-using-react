@@ -6,15 +6,15 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
 function Header() {
-  const [{basket,user},dispatch] = useStateValue()
-  const handleAuthentication = () =>{
+  const [{ basket, user }, dispatch] = useStateValue();
+  const handleAuthentication = () => {
     if (user) {
-      auth.signOut()
+      auth.signOut();
     }
-  }
+  };
   return (
     <div className="header">
-      <Link to="/">
+      <Link to="/" className="header_clearlink">
         <img
           className="header__logo"
           src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
@@ -25,27 +25,33 @@ function Header() {
         <SearchIcon className="header__searchIcon" />
       </div>
       <div className="header__nav">
-      <Link to = {!user && '/login'}>
-        <div onClick={handleAuthentication} className="header__option">
-          <span className="header__optionLineOne">Hello {!user?'Guset':user?.email}</span>
-          <span className="header__optionLineTwo">{user?"Sign Out":'Sign In'}</span>
-        </div>
+        <Link to={!user && "/login"} className="header_clearlink">
+          <div onClick={handleAuthentication} className="header__option">
+            <span className="header__optionLineOne">
+              Hello {!user ? "Guset" : user?.email}
+            </span>
+            <span className="header__optionLineTwo">
+              {user ? "Sign Out" : "Sign In"}
+            </span>
+          </div>
         </Link>
-       <Link to= "/orders">
-       <div className="header__option">
-          <span className="header__optionLineOne">Returns</span>
-          <span className="header__optionLineTwo">& Orders</span>
-        </div>
-       </Link>
+        <Link to="/orders" className="header_clearlink">
+          <div className="header__option">
+            <span className="header__optionLineOne">Returns</span>
+            <span className="header__optionLineTwo">& Orders</span>
+          </div>
+        </Link>
         <div className="header__option">
           <span className="header__optionLineOne">Your</span>
           <span className="header__optionLineTwo">& Prime</span>
         </div>
-        <Link to="/checkout">
+        <Link to="/checkout" className="header_clearlink">
           <div className="header__optionBasket">
             <ShoppingBasketIcon />
 
-            <span className="header__optionLineTwo header__basketCount">{basket.length}</span>
+            <span className="header__optionLineTwo header__basketCount">
+              {basket.length}
+            </span>
           </div>
         </Link>
       </div>

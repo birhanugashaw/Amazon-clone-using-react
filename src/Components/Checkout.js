@@ -3,7 +3,6 @@ import "./Checkout.css";
 import CheckOutProduct from "./CheckOutProduct";
 import { useStateValue } from "./StateProvider";
 import Subtotal from "./Subtotal";
-// import { v4 as uuidv4 } from 'uuid'; // import uuid package
 
 function Checkout() {
   const [{ basket }, dispatch] = useStateValue();

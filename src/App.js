@@ -38,13 +38,13 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header />
+        
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/payment" element={<Elements stripe={promise}><Payment /></Elements>} />
+          <Route path="/login" element={ <Login />} /> 
+          <Route path="/" element={<><Header /> <Home /></>} />
+          <Route path="/checkout" element={<><Header /> <Checkout /></>} />
+          <Route path="/orders" element={<><Header /><Orders /> </>} />
+          <Route path="/payment" element={<><Header /><Elements stripe={promise}><Payment /></Elements> </>} />
         </Routes>
       </div>
     </Router>

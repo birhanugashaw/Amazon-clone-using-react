@@ -3,16 +3,14 @@ import { db } from "./firebase";
 import Order from "./Order";
 import "./Orders.css";
 import { useStateValue } from "./StateProvider";
+
 const Orders = () => {
 	const [{ basket, user }, disPatch] = useStateValue();
 	const [orders, setOrders] = useState([]);
+
 	useEffect(() => {
 		if (user) {
-			db.collection("users")
-				.doc(user?.uid)
-				.collection("orders")
-				.orderBy("created", "desc")
-				.onSnapshot((snapshot) =>
+			db.collection("users").doc(user?.uid).collection("orders").orderBy("created", "desc").onSnapshot((snapshot) =>
 					setOrders(
 						snapshot.docs.map((doc) => ({
 							id: doc.id,
